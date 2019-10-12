@@ -15,12 +15,13 @@ local defaults; do
                 
                 event:connect(function()
                     local input = frame.InputBegan:connect(function(key)
-                        if key.UserInputType == Enum.UserInputType.MouseButton1 then;
+                        if key.UserInputType == Enum.UserInputType.MouseButton1 then
+                            local objectPosition = Vector2.new(frame.AbsolutePosition.X, frame.AbsolutePosition.Y);
+							local fif = mouse.X - frame.AbsolutePosition.X
+							local faf = mouse.Y - frame.AbsolutePosition.Y
                             while heartbeat:wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
                                 pcall(function()
-									local cummy = mouse.X - frame.AbsolutePosition.X
-									local scat = mouse.Y - frame.AbsolutePosition.Y
-                                    frame:TweenPosition(UDim2.new(0, mouse.X + cummy, 0, mouse.Y + scat), 'Out', 'Linear', 0.1, true);
+                                    frame:TweenPosition(UDim2.new(0, mouse.X - fif, 0, mouse.Y - faf), 'Out', 'Linear', 0.1, true);
                                 end)
                             end
                         end
