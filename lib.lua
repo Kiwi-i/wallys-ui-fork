@@ -16,7 +16,7 @@ local defaults; do
                 event:connect(function()
                     local input = frame.InputBegan:connect(function(key)
                         if key.UserInputType == Enum.UserInputType.MouseButton1 then
-                            local objectPosition = Vector2.new(frame.AbsolutePosition.X, frame.AbsolutePosition.Y);
+                            local objectPosition = Vector2.new(frame.AbsolutePosition.X, frame.AbsolutePosition.Y)
                             while heartbeat:wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
                                 pcall(function()
                                     frame:TweenPosition(UDim2.new(0, mouse.X, 0, mouse.Y) 'Out', 'Linear', 0.1, true);
