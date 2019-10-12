@@ -144,7 +144,7 @@ local defaults; do
                 local targetSize = window.toggled and UDim2.new(1, 0, 0, y+5) or UDim2.new(1, 0, 0, 0);
                 local targetDirection = window.toggled and "In" or "Out"
 
-                window.container:TweenSize(targetSize, targetDirection, "Quad", 0.15, true)
+                window.container:TweenSize(targetSize, targetDirection, "Quad", 1, true)
                 wait(.15)
                 if window.toggled then
                     window.container.ClipsDescendants = false;
