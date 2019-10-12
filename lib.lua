@@ -960,29 +960,7 @@ local defaults; do
         return obj
     end
     
-    function library:CreateWindow(name, options)
-		
-        if (not library.container) then
-            library.container = self:Create("ScreenGui", {
-                self:Create('Frame', {
-                    Name = 'Container';
-                    Size = UDim2.new(1, -30, 1, 0);
-                    Position = UDim2.new(0, 20, 0, 20);
-                    BackgroundTransparency = 1;
-                    Active = false;
-                });
-                Parent = game:GetService("CoreGui");
-            }):FindFirstChild('Container');
-        end
-        
-        library.options = setmetatable(options or {}, {__index = defaults})
-        
-        local window = types.window(name, library.options);
-        dragger.new(window.object);
-        return window
-    end
-    
-    default = {
+	default = {
         topcolor       = Color3.fromRGB(30, 30, 30);
         titlecolor     = Color3.fromRGB(255, 255, 255);
         
@@ -1011,6 +989,32 @@ local defaults; do
         placeholdercolor = Color3.fromRGB(255, 255, 255);
         titlestrokecolor = Color3.fromRGB(0, 0, 0);
     }
+	
+    function library:CreateWindow(name, options)
+		
+        if (not library.container) then
+            library.container = self:Create("ScreenGui", {
+                self:Create('Frame', {
+                    Name = 'Container';
+                    Size = UDim2.new(1, -30, 1, 0);
+                    Position = UDim2.new(0, 20, 0, 20);
+                    BackgroundTransparency = 1;
+                    Active = false;
+                });
+                Parent = game:GetService("CoreGui");
+            }):FindFirstChild('Container');
+        end
+        if (not library.options) then
+			library.options = setmetatable(options or {}, {__index = defaults})
+        end
+		if (options) then
+			library.options = setmetatable(options, {__index = default})
+		end
+		
+        local window = types.window(name, library.options);
+        dragger.new(window.object);
+        return window
+    end
 
     library.options = setmetatable({}, {__index = default})
 
