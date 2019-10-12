@@ -144,7 +144,7 @@ local defaults; do
                 local targetSize = window.toggled and UDim2.new(1, 0, 0, y+5) or UDim2.new(1, 0, 0, 0);
                 local targetDirection = window.toggled and "In" or "Out"
 
-                window.container:TweenSize(targetSize, targetDirection, "Quad", 1, true)
+                window.container:TweenSize(targetSize, targetDirection, "Quint", .6, true)
                 wait(1)
                 if window.toggled then
                     window.container.ClipsDescendants = false;
@@ -749,7 +749,7 @@ local defaults; do
                                         child:Destroy();
                                     end
                                 end
-                                box:FindFirstChild('Box').Container:TweenSize(UDim2.new(1, 0, 0, 0), 'Out', 'Quad', 1, true)
+                                box:FindFirstChild('Box').Container:TweenSize(UDim2.new(1, 0, 0, 0), 'Out', 'Quint', .6, true)
                             end)
                         end
                     end
@@ -763,7 +763,7 @@ local defaults; do
                     box:FindFirstChild('Box').Container.ScrollBarThickness = 5;
                 end
 
-                box:FindFirstChild('Box').Container:TweenSize(UDim2.new(1, 0, 0, y), 'Out', 'Quad', 1, true)
+                box:FindFirstChild('Box').Container:TweenSize(UDim2.new(1, 0, 0, y), 'Out', 'Quint', .6, true)
                 box:FindFirstChild('Box').Container.CanvasSize = UDim2.new(1, 0, 0, (20 * (#c)) - 20)
             end
 
@@ -900,7 +900,7 @@ local defaults; do
                     end)
                 end
                 
-                container:TweenSize(goSize, 'Out', 'Quad', 1, true)
+                container:TweenSize(goSize, 'Out', 'Quint', .6, true)
                 
                 local function isInGui(frame)
                     local mloc = game:GetService('UserInputService'):GetMouseLocation();
@@ -917,7 +917,7 @@ local defaults; do
                         check:FindFirstChild('dropdown_lbl'):WaitForChild('Selection').TextColor3 = library.options.textcolor
                         check:FindFirstChild('dropdown_lbl'):WaitForChild('Selection').Text       = location[flag];
 
-                        container:TweenSize(UDim2.new(1, 0, 0, 0), 'In', 'Quad', 1, true)
+                        container:TweenSize(UDim2.new(1, 0, 0, 0), 'In', 'Quint', .6, true)
                         wait(0.15)
 
                         game:GetService('Debris'):AddItem(container, 0)
