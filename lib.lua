@@ -19,7 +19,7 @@ local defaults; do
                             local objectPosition = Vector2.new(mouse.X - frame.AbsolutePosition.X, mouse.Y - frame.AbsolutePosition.Y);
                             while heartbeat:wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
                                 pcall(function()
-                                    frame:TweenPosition(UDim2.new(0, mouse.X - frame.AbsolutePosition.X, 0, mouse.Y - frame.AbsolutePosition.Y, 'Out', 'Quart', 0.1, true);
+                                    frame:TweenPosition(UDim2.new(0, mouse.X - objectPosition.X + (frame.Size.X.Offset * frame.AnchorPoint.X), 0, mouse.Y - objectPosition.Y + (frame.Size.Y.Offset * frame.AnchorPoint.Y)), 'Out', 'Linear', 0.1, true);
                                 end)
                             end
                         end
@@ -961,6 +961,7 @@ local defaults; do
     end
     
     function library:CreateWindow(name, options)
+		
         if (not library.container) then
             library.container = self:Create("ScreenGui", {
                 self:Create('Frame', {
@@ -974,9 +975,7 @@ local defaults; do
             }):FindFirstChild('Container');
         end
         
-        if (not library.options) then
-            library.options = setmetatable(options or {}, {__index = defaults})
-        end
+        library.options = setmetatable(options or {}, {__index = defaults})
         
         local window = types.window(name, library.options);
         dragger.new(window.object);
@@ -987,7 +986,7 @@ local defaults; do
         topcolor       = Color3.fromRGB(30, 30, 30);
         titlecolor     = Color3.fromRGB(255, 255, 255);
         
-        underlinecolor = Color3.fromRGB(255, 103, 250);
+        underlinecolor = Color3.fromRGB(0, 255, 140);
         bgcolor        = Color3.fromRGB(35, 35, 35);
         boxcolor       = Color3.fromRGB(35, 35, 35);
         btncolor       = Color3.fromRGB(25, 25, 25);
