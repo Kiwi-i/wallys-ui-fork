@@ -145,7 +145,7 @@ local defaults; do
                 local targetDirection = window.toggled and "In" or "Out"
 
                 window.container:TweenSize(targetSize, targetDirection, "Quint", .3, true)
-                wait(1)
+                wait(.3)
                 if window.toggled then
                     window.container.ClipsDescendants = false;
                 end
